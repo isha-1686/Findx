@@ -1,0 +1,223 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * Reunite design system — Midnight Indigo.
+ * Dark-only, glowing indigo accents on deep navy, Space Grotesk display
+ * over DM Sans body. All colors are oklch semantic tokens.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-glow: var(--primary-glow);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-lost: var(--lost);
+  --color-found: var(--found);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --radius: 1rem;
+  --background: oklch(0.135 0.035 285);
+  --foreground: oklch(0.96 0.012 275);
+  --card: oklch(0.185 0.05 280);
+  --card-foreground: oklch(0.96 0.012 275);
+  --popover: oklch(0.185 0.05 280);
+  --popover-foreground: oklch(0.96 0.012 275);
+  --primary: oklch(0.55 0.23 277);
+  --primary-foreground: oklch(0.98 0.005 275);
+  --primary-glow: oklch(0.7 0.19 285);
+  --secondary: oklch(0.25 0.07 275);
+  --secondary-foreground: oklch(0.96 0.012 275);
+  --muted: oklch(0.23 0.05 278);
+  --muted-foreground: oklch(0.72 0.04 275);
+  --accent: oklch(0.3 0.09 275);
+  --accent-foreground: oklch(0.96 0.012 275);
+  --destructive: oklch(0.62 0.2 25);
+  --destructive-foreground: oklch(0.98 0.005 275);
+  --lost: oklch(0.78 0.15 70);
+  --found: oklch(0.8 0.14 165);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.6 0.16 277);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--primary) 40%, transparent);
+  }
+}
+
+/* ---- Motion ---- */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+@keyframes cube-spin {
+  from { transform: rotateX(-18deg) rotateY(0deg); }
+  to { transform: rotateX(-18deg) rotateY(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.08); }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  from { background-position: 200% 0; }
+  to { background-position: -200% 0; }
+}
+
+@utility animate-float {
+  animation: float 7s ease-in-out infinite;
+}
+
+@utility animate-float-slow {
+  animation: float 11s ease-in-out infinite;
+}
+
+@utility animate-cube {
+  animation: cube-spin 22s linear infinite;
+}
+
+@utility animate-pulse-glow {
+  animation: pulse-glow 5s ease-in-out infinite;
+}
+
+@utility animate-fade-up {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@utility animate-fade-up-delay-1 {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+@utility animate-fade-up-delay-2 {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.24s both;
+}
+
+@utility animate-fade-up-delay-3 {
+  animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both;
+}
+
+/* ---- Surfaces ---- */
+
+@utility glass {
+  background: color-mix(in oklab, var(--card) 72%, transparent);
+  backdrop-filter: blur(14px);
+  border: 1px solid var(--color-border);
+}
+
+@utility glow-card {
+  background:
+    radial-gradient(120% 140% at 15% 0%, color-mix(in oklab, var(--primary) 22%, transparent), transparent 55%),
+    color-mix(in oklab, var(--card) 88%, transparent);
+  border: 1px solid color-mix(in oklab, var(--primary) 25%, transparent);
+  box-shadow: 0 24px 60px -24px color-mix(in oklab, var(--primary) 45%, transparent);
+}
+
+@utility text-gradient {
+  background: linear-gradient(100deg, var(--foreground) 10%, var(--primary-glow) 55%, var(--primary) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility lost-tint {
+  background: radial-gradient(120% 140% at 20% 0%, color-mix(in oklab, var(--lost) 18%, transparent), transparent 60%),
+    color-mix(in oklab, var(--card) 90%, transparent);
+  border-color: color-mix(in oklab, var(--lost) 30%, transparent);
+}
+
+@utility found-tint {
+  background: radial-gradient(120% 140% at 20% 0%, color-mix(in oklab, var(--found) 18%, transparent), transparent 60%),
+    color-mix(in oklab, var(--card) 90%, transparent);
+  border-color: color-mix(in oklab, var(--found) 30%, transparent);
+}
+
+/* ---- 3D scene ---- */
+
+@utility cube-scene {
+  perspective: 1000px;
+}
+
+@utility cube-body {
+  transform-style: preserve-3d;
+}
+
+@utility cube-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1.25rem;
+  border: 1px solid color-mix(in oklab, var(--primary-glow) 40%, transparent);
+  background:
+    radial-gradient(120% 140% at 30% 10%, color-mix(in oklab, var(--primary) 35%, transparent), color-mix(in oklab, var(--card) 85%, transparent) 70%);
+  box-shadow: inset 0 0 40px color-mix(in oklab, var(--primary) 30%, transparent);
+  font-family: var(--font-display);
+  backface-visibility: visible;
+}
+
+@utility tilt-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
+  will-change: transform;
+}

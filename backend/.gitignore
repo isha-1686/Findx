@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# Environment variables (never commit real keys!)
+.env
+
+# ML model artifacts (large files — store via DVC or similar)
+data/models/*.pth
+data/models/class_names.json
+
+# Raw dataset (use the zip and re-extract)
+data/raw/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+

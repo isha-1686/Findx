@@ -250,7 +250,7 @@ Findx-main/
 
 ---
 
-## 🎓 Viva & Academic Defense Highlights
+##  Highlights
 
 | Evaluation Question | How FindX Answers It |
 |:---|:---|
